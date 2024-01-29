@@ -12,14 +12,12 @@ const usersFilePath = './api/user.json';
 
 // Route to retrieve user data
 app.get('/api/user', (req, res) => {
-    fs.readFile(usersFilePath, 'utf8', (err, data) => {
-        
-        try {
-            const users = JSON.parse(data);
-            res.json(users);
-        } catch (error) {
-            console.error(error);
-            res.status(500).json({ error: 'Error parsing user data' });
+    fs.readFile(usersFilePath, (err, data) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send('Error reading file');
+        } else {
+            res.send(JSON.parse(data));
         }
     });
 });
