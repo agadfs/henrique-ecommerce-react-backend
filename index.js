@@ -30,7 +30,7 @@ app.patch("/api/user/update/:userId", (req, res) => {
     fs.readFile(productsDataPath, (err, data) => {
         if (err) {
             console.error(err);
-            res.status(500).json({ error: 'Error reading user data' });
+            res.status(500).json({ error: 'Error reading user datas' });
         } else {
             let users = JSON.parse(data);
             const userToUpdateIndex = users.findIndex(user => user.id === userId);
