@@ -6,7 +6,7 @@ const cors = require('cors');
 app.use(express.json());
 app.use(cors());
 
-const productsDataPath = './api/user.json';
+const productsDataPath = './user.json';
 
 // Route to retrieve user data
 app.get("/api/user", (req, res) => {
@@ -49,7 +49,7 @@ app.patch("/api/user/update/:userId", (req, res) => {
     });
 });
 
-// Route to update all user data
+
 app.put("/api/user/update", (req, res) => {
     const updatedUsers = req.body;
 
