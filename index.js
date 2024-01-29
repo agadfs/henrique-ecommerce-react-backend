@@ -12,9 +12,11 @@ const productsDataPath = './api/user.json';
 
 app.get("/api/user", (req, res) => {
 
+    const data = fs.readFileSync(productsDataPath);
 
-    
-    res.json({ message: 'User data fetched successfully'});
+    const products = JSON.parse(data);
+    res.json(products);
+
 
 });
 
