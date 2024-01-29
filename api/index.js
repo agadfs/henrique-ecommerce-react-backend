@@ -1,35 +1,69 @@
 const express = require('express');
 const fs = require('fs');
-const cors = require('cors');
-
 const app = express();
-const PORT = process.env.PORT || 5000;
+const cors = require('cors');
 
 app.use(express.json());
 app.use(cors());
 
-const usersFilePath = './api/user.json';
+const productsDataPath = './api/user.json';
 
 // Route to retrieve user data
-app.get('/api/user', (req, res) => {
-    fs.readFile(usersFilePath, 'utf8', (err, data) => {
+app.get("/api/user", (req, res) => {
+    fs.readFile(productsDataPath, (err, data) => {
         if (err) {
             console.error(err);
-            res.status(500).json({ error: 'Error reading user data' });
-            return;
+            return res.status(500).json({ error: 'Error reading user data' });
         }
-        try {
-            const users = JSON.parse(data);
-            res.json(users);
-        } catch (error) {
-            console.error(error);
-            res.status(500).json({ error: 'Error parsing user data' });
-        }
+        const users = JSON.parse(data);
+        res.json(users);
     });
 });
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+// Route to update user data
+app.patch("/api/user/update/:userId", (req, res) => {
+    const userId = req.params.userId;
+    const updatedUserData = req.body;
+
+    fs.readFile(productsDataPath, (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'Error reading user data' });
+        }
+        let users = JSON.parse(data);
+        const userToUpdateIndex = users.findIndex(user => user.id === userId);
+
+        if (userToUpdateIndex === -1) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        users[userToUpdateIndex] = { ...users[userToUpdateIndex], ...updatedUserData };
+
+        fs.writeFile(productsDataPath, JSON.stringify(users, null, 2), (err) => {
+            if (err) {
+                console.error(err);
+                return res.status(500).json({ error: 'Error updating user data' });
+            }
+            res.json({ message: 'User updated successfully' });
+        });
+    });
+});
+
+// Route to update all user data
+app.put("/api/user/update", (req, res) => {
+    const updatedUsers = req.body;
+
+    fs.writeFile(productsDataPath, JSON.stringify(updatedUsers, null, 2), (err) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'Error updating user data' });
+        }
+        res.json({ message: 'Users updated successfully' });
+    });
+});
+
+app.listen(5000, () => {
+    console.log('Server started on port 5000');
 });
 
 module.exports = app;
