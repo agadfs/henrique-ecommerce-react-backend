@@ -10,21 +10,22 @@ app.use(cors());
 const productsDataPath = './api/user.json';
 
 
+
+
 app.get("/api/user", (req, res) => {
-    
-    const data = fs.readFileSync(productsDataPath);
-           
-            const products = JSON.parse(data);
-            res.json(products);
-        
-    
+
+    const data = fs.readFileSync(productsDataPath, 'utf8');
+    const products = JSON.parse(data);
+    res.json(products);
+
+
 });
 
 app.patch("/api/user/update/:userId", (req, res) => {
     const userId = req.params.userId;
     const updatedUserData = req.body;
-    
-    
+
+
     fs.readFile(productsDataPath, (err, data) => {
         if (err) {
             console.error(err);
@@ -54,10 +55,10 @@ app.patch("/api/user/update/:userId", (req, res) => {
 });
 
 app.put("/api/user/update", (req, res) => {
-    
+
     const updatedProducts = req.body;
 
-    
+
     fs.writeFile(productsDataPath, JSON.stringify(updatedProducts, null, 2), (err) => {
         if (err) {
             console.error(err);
