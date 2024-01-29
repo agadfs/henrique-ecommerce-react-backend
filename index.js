@@ -2,16 +2,18 @@
 const express = require('express');
 const fs = require('fs');
 const app = express();
+const cors = require('cors');
 
 app.use(express.json());
-
+app.use(cors());
 
 const productsDataPath = './api/user.json';
 
 
 app.get("/api/user", (req, res) => {
 
-    const data = fs.readFileSync(productsDataPath);
+    const data = fs.readFile(productsDataPath);
+
     const products = JSON.parse(data);
     res.json(products);
 
