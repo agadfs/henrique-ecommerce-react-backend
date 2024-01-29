@@ -8,10 +8,11 @@ app.use(cors());
 
 const productsDataPath = './api/user.json';
 
+app.use('/api/user', require('./api/user'));
 
-app.get("/api/user", (req, res) => {
+/* app.get("/api/user", (req, res) => {
     
-    fs.readFileSync(productsDataPath, (err, data) => {
+    fs.readFile(productsDataPath, (err, data) => {
         if (err) {
             console.error(err);
             res.status(500).json({ error: 'Error reading products data' });
@@ -76,3 +77,4 @@ app.listen(5000, () => {
     console.log('Server started on port 5000');
 });
 
+ */
