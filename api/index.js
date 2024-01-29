@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json());
 app.use(cors());
 
-const usersFilePath = './api/user.json';
+const usersFilePath = './user.json';
 
 // Route to retrieve user data
 app.get('/api/user', (req, res) => {
