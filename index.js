@@ -26,6 +26,7 @@ app.get("/api/user", (req, res) => {
 app.patch("/api/user/update/:userId", (req, res) => {
     const userId = req.params.userId;
     const updatedUserData = req.body;
+    const hello = 'hello'
     
     fs.readFile(productsDataPath, (err, data) => {
         if (err) {
