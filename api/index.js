@@ -13,11 +13,7 @@ const usersFilePath = './api/user.json';
 // Route to retrieve user data
 app.get('/api/user', (req, res) => {
     fs.readFileSync(usersFilePath, 'utf8', (err, data) => {
-        if (err) {
-            console.error(err);
-            res.status(500).json({ error: 'Error reading user data' });
-            return;
-        }
+        
         try {
             const users = JSON.parse(data);
             res.json(users);
