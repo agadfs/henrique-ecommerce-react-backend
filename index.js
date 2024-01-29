@@ -11,7 +11,7 @@ const productsDataPath = './api/user.json';
 
 app.get("/api/user", (req, res) => {
     
-    fs.readFile(productsDataPath, (err, data) => {
+    fs.readFileSync(productsDataPath, (err, data) => {
         if (err) {
             console.error(err);
             res.status(500).json({ error: 'Error reading products data' });
