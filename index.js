@@ -8,16 +8,7 @@ const productsDataPath = './api/user.json';
 
 app.use('/api/user', (req, res) => {
     
-    fs.readFile(productsDataPath, (err, data) => {
-        if (err) {
-            console.error(err);
-            res.status(500).json({ error: 'Error reading products data' });
-        } else {
-           
-            const products = JSON.parse(data);
-            res.json(products);
-        }
-    });
+    res.json({message: 'hello world'});
 });
 
 
