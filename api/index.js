@@ -6,7 +6,7 @@ const cors = require('cors');
 app.use(express.json());
 app.use(cors());
 
-const productsDataPath = './user.json';
+const productsDataPath = './api/user.json';
 
 // Route to retrieve user data
 app.get("/api/user", (req, res) => {
