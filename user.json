@@ -1,0 +1,29 @@
+[
+  {
+    "id": "uplxhi2ftci3x2q82et94n",
+    "name": "Henrique",
+    "email": "henriquedefreitasserra@hotmail.com",
+    "password": "Serra123",
+    "CPF": "13883272795",
+    "cartproductsid": "Pr-pFCD3R4qrUvCgYaXsog,KrL0A3lmTV--D9H4p5Fz5Q,Xl_lOZ_pR2KwipoCMP7-6g,NDoDyK2hTNWVC5fJXmjkig,aMfwXfqtRZuXNoqHH21upQ",
+    "cartproductsquantity": "2,4,1,1,1"
+  },
+  {
+    "id": "AJP67fKic0dG5uUhxLyW",
+    "name": "jundira",
+    "email": "jun@hotmail.com",
+    "password": "jun123",
+    "CPF": "",
+    "cartproductsid": "Pr-pFCD3R4qrUvCgYaXsog,",
+    "cartproductsquantity": "1"
+  },
+  {
+    "id": "k3QHmrSA5b1ho3OZdaRi",
+    "name": "asd",
+    "email": "asd@hotmail.com",
+    "password": "asd123",
+    "CPF": "12312312",
+    "cartproductsid": "aMfwXfqtRZuXNoqHH21upQ,NDoDyK2hTNWVC5fJXmjkig,Pr-pFCD3R4qrUvCgYaXsog",
+    "cartproductsquantity": "1,4,2"
+  }
+]
